@@ -2,9 +2,26 @@
 <html>
 <head>
 	<title>Text To Speech API</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	templates
-	<p>{{foo}}</p>
+	<div class="container">
+		<div class="row">
+			<form method="post" action="">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="conversion_text">Input</label>
+					<textarea class="form-control" id="conversion_text" name="conversion_text">{{conversion_text}}</textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	{{gen_token}}
 </body>
 </html>
