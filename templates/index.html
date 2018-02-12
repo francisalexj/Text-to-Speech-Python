@@ -15,13 +15,26 @@
 			<form method="post" action="">
 				{% csrf_token %}
 				<div class="form-group">
-					<label for="conversion_text">Input</label>
-					<textarea class="form-control" id="conversion_text" name="conversion_text">{{conversion_text}}</textarea>
+					<label for="conversion_text">Converted Language</label>
+					<select class="form-control" name="conversion_lang" id="conversion_lang" required="required">
+						{% for key, value in language_list %}
+							<option {% if selected_lang == key %} selected="selected" {% endif %} value="{{key}}">{{value}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="conversion_text">Input Text</label>
+					<textarea class="form-control" id="conversion_text" name="conversion_text" required="required">{{conversion_text}}</textarea>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
+
+			{% if conversion_status %}
+				<div style="margin-top: 20px;">
+					<p>Saved Path : <a href="{{saved_path}}" target="_blank">{{saved_path}}</a></p>
+				</div>
+			{% endif %}
 		</div>
 	</div>
-	{{gen_token}}
 </body>
 </html>
