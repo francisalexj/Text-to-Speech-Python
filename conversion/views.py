@@ -7,17 +7,18 @@ from .models import ConversionModel
 
 def index(request):
 	conversion_text = request.POST.get('conversion_text', '')
+	conversion_lang = request.POST.get('conversion_lang', 'en')
 
 	cvm = ConversionModel()
 
 	language_list = gTTS.LANGUAGES.items()
-	selected_lang = "en"
+	selected_lang = conversion_lang
 
 	audio_save_path = 'static/files/' + cvm.id_generator() + ".mp3"
 	conversion_status = False
 
 	if conversion_text!="":
-		gts_conversion = gTTS(conversion_text)
+		gts_conversion = gTTS(text=conversion_text, lang=conversion_lang)
 		gts_conversion.save(audio_save_path)
 		conversion_status = True
 
