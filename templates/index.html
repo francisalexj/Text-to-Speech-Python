@@ -11,8 +11,8 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<form method="post" action="">
+		<div class="row" style="margin-top: 20px;">
+			<form method="post" action="/translate">
 				{% csrf_token %}
 				<div class="form-group">
 					<label for="conversion_text">Converted Language</label>
@@ -28,12 +28,6 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
-
-			{% if conversion_status %}
-				<div style="margin-top: 20px;">
-					<p>Saved Path : <a href="{{saved_path}}" target="_blank">{{saved_path}}</a></p>
-				</div>
-			{% endif %}
 		</div>
 	</div>
 </body>
